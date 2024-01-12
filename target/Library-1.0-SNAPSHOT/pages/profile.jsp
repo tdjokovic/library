@@ -19,7 +19,6 @@
     List<WaitlistModel> waits = LoanDAL.getWaitsForUser(user.getUserID());
     List<UserModel> users = null;
 
-    // TODO update
     if (user.getUserTypeID() == UserType.BIBLIOTEKAR.getValue())
         users = UserDAL.getUsers(UserType.CITALAC.getValue(), user.getUserID());
 
@@ -36,11 +35,6 @@
         email = "";
     if (lastName == null || lastName.equals("null"))
         lastName = "";
-
-
-    // ---------------------- RMI ----------------------
-    //    IOrderCounter orderCounter = (IOrderCounter)Naming.lookup("//localhost:" +Config.RMI_port +"/OrderCounter");
-    //    int count = orderCounter.countOrders(user.getUserID());
 
 %>
 <!DOCTYPE html>

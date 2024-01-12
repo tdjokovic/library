@@ -60,7 +60,6 @@
         var x = new XMLHttpRequest();
         x.onreadystatechange = function()
         {
-            // TODO optimizuj pretrazivanje i dodaj paginaciju
             if (x.readyState == 4 && x.status == 200)
             {
                 var books = JSON.parse(x.responseText);
@@ -84,7 +83,6 @@
                         str += "<h4 class='muted' style='text-align: center;'>" + book.name +"</h4>";
                         str += "<h5 style='text-align: center;'>" + book.authorFirstName + " "+ book.authorLastName +"</h5>";
                         if (auth) {
-                            // Make a separate request to fetch waitlist count
                             waitlistPromises.push(getWaitlistCount(book.bookID));
                             str += "<div id='book-" + book.bookID +"' ></div>";
                         }
@@ -95,13 +93,11 @@
 
                 Promise.all(waitlistPromises)
                     .then(function (waitlistCounts) {
-                        // Iterate through waitlistCounts and update the UI
                         waitlistCounts.forEach(({bookID, count}, index) => {
                             var av = "<h6 style='text-align: center;'>" + checkAvailability(books[index].availability, count) + "</h6>";
                             document.getElementById("book-" + bookID).innerHTML = av;
                         });
 
-                        // Update the UI after all asynchronous operations are done
                     });
 
                 function getWaitlistCount(bookID) {
@@ -117,7 +113,6 @@
                             }
                         };
 
-                        // Adjust the URL and method based on your server-side implementation
                         waitlistRequest.open("GET", "../waitlistCount?bookID=" + bookID, true);
                         waitlistRequest.send();
                     })

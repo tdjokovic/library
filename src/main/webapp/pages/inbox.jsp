@@ -174,7 +174,6 @@
 
                 if((parseInt(userID) === msg.senderID && parseInt(otherUserID) === msg.receiverID) || (parseInt(userID) === msg.receiverID && parseInt(otherUserID) === msg.senderID))
                 {
-                    // should show in this chat
                     var newMessage = generateMessage(msg, userID, otherUserID);
                     console.log(newMessage);
                     document.getElementById("messages-content").innerHTML += newMessage;
@@ -190,7 +189,6 @@
 
     function showChat(otherUserID)
     {
-        // todo highlight chosen chat
         var chatItems = document.querySelectorAll('#chat-list li');
         chatItems.forEach((chatItem) => {
             chatItem.classList.remove('active-chat');

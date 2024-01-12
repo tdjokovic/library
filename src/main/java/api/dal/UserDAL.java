@@ -94,7 +94,6 @@ public class UserDAL {
     {
         String sql = "delete from user where userID = ?";
 
-        // TODO add logic to remove all his loans and waitlist
         try
         {
             PreparedStatement ps = conn.prepareStatement(sql);

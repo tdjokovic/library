@@ -13,7 +13,6 @@
     UserModel user = UserDAL.getUserByID(Integer.parseInt(session.getAttribute("userID").toString()));
     List<UserModel> users = null;
 
-    // TODO ovo su svi korisnici sa kojima moze da se dopisuje
     if (user.getUserTypeID() == UserType.BIBLIOTEKAR.getValue())
         users = UserDAL.getUsers(UserType.BIBLIOTEKAR.getValue(), user.getUserID());
     else

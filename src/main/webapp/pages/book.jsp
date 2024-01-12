@@ -63,7 +63,6 @@
         <span class="text-center"><%= book.getDescription() %></span>
 
         <section class="row" style="margin: auto; margin-top: 20px">
-            <%-- // TODO add the case where he's already applied, or he's on the waitlist! should not be displayed  --%>
             <%
                 if(auth)
                 {
@@ -72,7 +71,6 @@
 
                     if(user.getUserTypeID() == UserType.BIBLIOTEKAR.getValue())
                     {
-                        // todo prikazi mu ko je zaduzio trenutno kao i tabelu waitliste
                         LoanModel currentLoan = LoanDAL.getCurrentLoaner(bookID);
                         if(currentLoan != null)
                         {
@@ -150,9 +148,6 @@
                             }
                             else
                             {
-                                // TODO dodaj ako je nulti na listi cekanja to znaci da knjiga vise nije pozajmljena da
-                                // TODO moze sada on da je iznajmi
-                                // TODO ako je waitlist 0 tj
                                 Integer waitlist = LoanDAL.checkIfImWaiting(userID,bookID);
                                 if(waitlist != -1)
                                 {
